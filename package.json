@@ -1,0 +1,29 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "A Vue.js project",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
+    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "test": "mocha test/spec.js",
+    "lint": "eslint --ext .js,.vue src test/unit",
+    "build": "node build/build.js"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "&gt;= 6.0.0",
+    "npm": "&gt;= 3.0.0"
+  },
+  "browserslist": [
+    "&gt; 1%",
+    "last 2 versions",
+    "not ie &lt;= 8"
+  ]
+}

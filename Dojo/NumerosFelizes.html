@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100&display=swap" rel="stylesheet"> 
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Digite um numero que deseja saber se é feliz ou não</h1>
+    <div class="campo">
+      <input type="text" id="campo">
+      <button type="submit" onclick="verificarSeUmNumeorFeliz()">Verificar</button>
+    </div>
+    <div class="paragrafo"  id="paragrafo">
+      
+    </div>
+  </div>
+</body>
+<style>
+  input{
+    outline: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 250px;
+  }
+
+  body {
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+  button{
+    background-color: #555555;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 7px 32px;
+    margin-left: 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  
+  .campo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .paragrafo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+</style>
+<script>
+  function verificarSeUmNumeorFeliz() {
+    let numeroEscolhido = document.getElementById('campo').value
+    let paragrafo = document.getElementById('paragrafo')
+    let numero = numeroEscolhido.toString()
+    let soma = 0
+    let repeticoes = 0
+    let nan = parseInt(numeroEscolhido).toString()
+
+    if (numeroEscolhido === "" || nan === "NaN") {
+      console.log(typeof(nan))
+      return paragrafo.innerHTML = "Por favor, digite um numero"
+    }
+
+    if (numeroEscolhido === 1) {
+      return paragrafo.innerHTML = "Numero Feliz"
+    }
+
+    while (soma != 1) {
+      for (let i = 0; i < numero.length; i++) {
+        let numeroAtual = Math.pow(parseInt(numero[i]), 2)
+        soma = soma + numeroAtual
+      }
+      numero = soma.toString()
+
+      if (soma === 1) {
+        return paragrafo.innerHTML = "Numero Feliz"
+      }
+
+      soma = 0
+      repeticoes++
+      if (repeticoes > 50) {
+        return paragrafo.innerHTML = "Numero Infeliz"
+      }
+    }
+  }
+</script>
+
+</html>
